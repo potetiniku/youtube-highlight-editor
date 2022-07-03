@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YougeneHighlightEditor.Model", "YougeneHighlightEditor.Model\YougeneHighlightEditor.Model.csproj", "{16AF052D-AC7A-44A6-AE6F-A49F2CFD8DE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YougeneHighlightEditor.Model", "YougeneHighlightEditor.Model\YougeneHighlightEditor.Model.csproj", "{16AF052D-AC7A-44A6-AE6F-A49F2CFD8DE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YougeneHighlightEditor.Wpf", "YougeneHighlightEditor.Wpf\YougeneHighlightEditor.Wpf.csproj", "{ABE1C5AB-35B3-439D-9CAB-14CC8FEE7A33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{16AF052D-AC7A-44A6-AE6F-A49F2CFD8DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16AF052D-AC7A-44A6-AE6F-A49F2CFD8DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16AF052D-AC7A-44A6-AE6F-A49F2CFD8DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE1C5AB-35B3-439D-9CAB-14CC8FEE7A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE1C5AB-35B3-439D-9CAB-14CC8FEE7A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE1C5AB-35B3-439D-9CAB-14CC8FEE7A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE1C5AB-35B3-439D-9CAB-14CC8FEE7A33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
