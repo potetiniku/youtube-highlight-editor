@@ -8,6 +8,14 @@ using CsvHelper.Configuration.Attributes;
 namespace YougeneHighlightEditor.Model;
 public class Highlight
 {
+	public Highlight(DateTime deliveredOn, Trigger trigger, string description, Uri youTubeUrl)
+	{
+		DeliveredOn = deliveredOn;
+		Trigger = trigger;
+		Description = description;
+		YouTubeUrl = youTubeUrl;
+	}
+
 	[Index(0), Name("配信日"), Format("yyyy-MM-dd")]
 	public DateTime DeliveredOn { get; set; }
 
