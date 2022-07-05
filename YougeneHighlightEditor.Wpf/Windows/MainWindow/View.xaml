@@ -13,6 +13,14 @@
     <Window.DataContext>
         <local:ViewModel/>
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding
+            Command="{Binding OpenCommand}"
+            Gesture="Ctrl+O"/>
+        <KeyBinding
+            Command="{Binding SaveCommand}"
+            Gesture="Ctrl+S"/>
+    </Window.InputBindings>
     <DockPanel>
         <Expander
             DockPanel.Dock="Left"

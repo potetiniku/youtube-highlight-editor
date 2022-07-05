@@ -1,11 +1,15 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
-using Reactive.Bindings;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CsvHelper;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using Reactive.Bindings;
 using YougeneHighlightEditor.Model;
 
 namespace YougeneHighlightEditor.Wpf.Windows.MainWindow;
@@ -31,7 +35,13 @@ internal partial class ViewModel
 	[ICommand]
 	private void Open()
 	{
-		throw new NotImplementedException();
+		CommonOpenFileDialog dialog = new();
+		if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+		{
+			Highlights.Clear();
+			CsvUtil.Read<Highlight>(dialog.FileName)
+				.ForEach(Highlights.Add);
+		}
 	}
 
 	[ICommand]
@@ -39,7 +49,7 @@ internal partial class ViewModel
 	{
 		Highlights.Add(new(
 			DeliveredOn.Value,
-			Trigger.Value, 
+			Trigger.Value,
 			Description.Value,
 			new(YouTubeUrl.Value)));
 	}
@@ -47,6 +57,6 @@ internal partial class ViewModel
 	[ICommand]
 	private void Save()
 	{
-		throw new NotImplementedException();
+
 	}
 }
