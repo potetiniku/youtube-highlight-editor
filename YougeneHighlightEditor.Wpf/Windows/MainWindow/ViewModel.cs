@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -33,6 +34,8 @@ internal partial class ViewModel
 	};
 
 	public ReactiveCollection<Highlight> Highlights { get; set; } = new();
+
+	public ReactiveProperty<SnackbarMessageQueue> MessageQueue { get; } = new(new SnackbarMessageQueue());
 
 	private string editingFile = string.Empty;
 	private string EditingFile
@@ -81,5 +84,9 @@ internal partial class ViewModel
 	private void Save()
 	{
 		CsvUtil.OverWrite(editingFile, Highlights);
+
+		MessageQueue.Value.Enqueue("保存しました。",
+			null, null, null, false, true,
+			TimeSpan.FromSeconds(2));
 	}
 }

@@ -28,68 +28,71 @@
             <b:InvokeCommandAction Command="{Binding OpenCommand}"/>
         </b:EventTrigger>
     </b:Interaction.Triggers>
-    <DockPanel>
-        <Expander
-            DockPanel.Dock="Left"
-            ExpandDirection="Left"
-            IsExpanded="True">
-            <DockPanel Margin="8,0,0,8">
-                <Button
-                    Margin="0,8,0,0"
-                    Command="{Binding AddCommand}"
-                    Content="追加"
-                    Cursor="Hand"
-                    DockPanel.Dock="Bottom"/>
-                <StackPanel>
-                    <Calendar
-                        materialDesign:CalendarAssist.IsHeaderVisible="False"
-                        SelectedDate="{Binding DeliveredOn.Value}"/>
-                    <ComboBox
-                        Width="120"
-                        HorizontalAlignment="Left"
-                        materialDesign:HintAssist.Hint="トリガー"
-                        DisplayMemberPath="Value"
-                        ItemsSource="{Binding TriggerToDisplays}"
-                        SelectedValue="{Binding Trigger.Value}"
-                        SelectedValuePath="Key"/>
-                    <TextBox
-                        Width="240"
+    <Grid>
+        <DockPanel>
+            <Expander
+                DockPanel.Dock="Left"
+                ExpandDirection="Left"
+                IsExpanded="True">
+                <DockPanel Margin="8,0,0,8">
+                    <Button
                         Margin="0,8,0,0"
-                        materialDesign:HintAssist.Hint="説明"
-                        Text="{Binding Description.Value}"/>
-                    <TextBox
-                        Width="240"
-                        Margin="0,8,0,0"
-                        materialDesign:HintAssist.Hint="YouTubeのURL"
-                        Text="{Binding YouTubeUrl.Value}"
-                        TextWrapping="Wrap"/>
-                </StackPanel>
-            </DockPanel>
-        </Expander>
-        <DataGrid
-            AutoGenerateColumns="False"
-            CanUserAddRows="False"
-            ItemsSource="{Binding Highlights}"
-            SelectionMode="Extended"
-            SelectionUnit="FullRow">
-            <DataGrid.Columns>
-                <DataGridTextColumn
-                    Binding="{Binding DeliveredOn, StringFormat=yyyy/MM/dd}"
-                    Header="配信日"
-                    IsReadOnly="True"/>
-                <DataGridTextColumn
-                    Binding="{Binding Trigger}"
-                    Header="トリガー"
-                    IsReadOnly="True"/>
-                <DataGridTextColumn
-                    Binding="{Binding Description}"
-                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
-                    Header="説明"/>
-                <DataGridHyperlinkColumn
-                    Binding="{Binding YouTubeUrl}"
-                    Header="YouTubeのURL"
-                    IsReadOnly="True"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </DockPanel>
+                        Command="{Binding AddCommand}"
+                        Content="追加"
+                        Cursor="Hand"
+                        DockPanel.Dock="Bottom"/>
+                    <StackPanel>
+                        <Calendar
+                            materialDesign:CalendarAssist.IsHeaderVisible="False"
+                            SelectedDate="{Binding DeliveredOn.Value}"/>
+                        <ComboBox
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            materialDesign:HintAssist.Hint="トリガー"
+                            DisplayMemberPath="Value"
+                            ItemsSource="{Binding TriggerToDisplays}"
+                            SelectedValue="{Binding Trigger.Value}"
+                            SelectedValuePath="Key"/>
+                        <TextBox
+                            Width="240"
+                            Margin="0,8,0,0"
+                            materialDesign:HintAssist.Hint="説明"
+                            Text="{Binding Description.Value}"/>
+                        <TextBox
+                            Width="240"
+                            Margin="0,8,0,0"
+                            materialDesign:HintAssist.Hint="YouTubeのURL"
+                            Text="{Binding YouTubeUrl.Value}"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DockPanel>
+            </Expander>
+            <DataGrid
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                ItemsSource="{Binding Highlights}"
+                SelectionMode="Extended"
+                SelectionUnit="FullRow">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Binding="{Binding DeliveredOn, StringFormat=yyyy/MM/dd}"
+                        Header="配信日"
+                        IsReadOnly="True"/>
+                    <DataGridTextColumn
+                        Binding="{Binding Trigger}"
+                        Header="トリガー"
+                        IsReadOnly="True"/>
+                    <DataGridTextColumn
+                        Binding="{Binding Description}"
+                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                        Header="説明"/>
+                    <DataGridHyperlinkColumn
+                        Binding="{Binding YouTubeUrl}"
+                        Header="YouTubeのURL"
+                        IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+        <materialDesign:Snackbar MessageQueue="{Binding MessageQueue.Value}"/>
+    </Grid>
 </Window>
