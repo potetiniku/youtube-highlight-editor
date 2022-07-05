@@ -51,7 +51,7 @@ internal partial class ViewModel
 			DeliveredOn.Value,
 			Trigger.Value,
 			Description.Value,
-			new(YouTubeUrl.Value)));
+			YouTubeUrl.Value));
 	}
 
 	[ICommand]

@@ -8,7 +8,7 @@ using CsvHelper.Configuration.Attributes;
 namespace YougeneHighlightEditor.Model;
 public class Highlight
 {
-	public Highlight(DateTime deliveredOn, Trigger trigger, string description, Uri youTubeUrl)
+	public Highlight(DateTime deliveredOn, Trigger trigger, string description, string youTubeUrl)
 	{
 		DeliveredOn = deliveredOn;
 		Trigger = trigger;
@@ -25,6 +25,7 @@ public class Highlight
 	[Index(2), Name("説明")]
 	public string Description { get; set; }
 
+	// Uri型だとRead/Write時にStackOverflowExceptionが発生する
 	[Index(3), Name("YouTubeのURL")]
-	public Uri YouTubeUrl { get; set; }
+	public string YouTubeUrl { get; set; }
 }
