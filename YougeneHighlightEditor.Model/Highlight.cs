@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CsvHelper.Configuration.Attributes;
 
 namespace YougeneHighlightEditor.Model;
-public class Highlight
+public class Highlight : IComparable
 {
 	// デフォルトコンストラクタがないと読み込み時にCsvHelper.HeaderValidationExceptionが発生するため
 	public Highlight() { }
@@ -31,4 +31,9 @@ public class Highlight
 	// Uri型だとRead/Write時にStackOverflowExceptionが発生する
 	[Index(3), Name("YouTubeのURL")]
 	public string YouTubeUrl { get; set; }
+
+	public int CompareTo(object obj)
+	{
+		return DeliveredOn.CompareTo(((Highlight)obj).DeliveredOn);
+	}
 }

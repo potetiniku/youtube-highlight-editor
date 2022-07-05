@@ -52,6 +52,13 @@ internal partial class ViewModel
 			Trigger.Value,
 			Description.Value,
 			YouTubeUrl.Value));
+
+		Trigger.Value = Model.Trigger.Other;
+		Description.Value = string.Empty;
+		YouTubeUrl.Value = string.Empty;
+
+		// 参考: https://stackoverflow.com/questions/1945461/how-do-i-sort-an-observable-collection
+		Highlights.Sort();
 	}
 
 	[ICommand]
