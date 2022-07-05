@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,16 @@ public partial class View : Window
 	public View()
 	{
 		InitializeComponent();
+	}
+
+	private void Hyperlink_Click(object sender, RoutedEventArgs e)
+	{
+		Hyperlink link = (Hyperlink)e.OriginalSource;
+		// ブラウザで開く
+		Process.Start(new ProcessStartInfo()
+		{
+			FileName = link.NavigateUri.AbsoluteUri,
+			UseShellExecute = true
+		});
 	}
 }

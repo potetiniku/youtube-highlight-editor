@@ -89,7 +89,15 @@
                     <DataGridHyperlinkColumn
                         Binding="{Binding YouTubeUrl}"
                         Header="YouTubeのURL"
-                        IsReadOnly="True"/>
+                        IsReadOnly="True">
+                        <DataGridHyperlinkColumn.ElementStyle>
+                            <Style>
+                                <EventSetter
+                                    Event="Hyperlink.Click"
+                                    Handler="Hyperlink_Click"/>
+                            </Style>
+                        </DataGridHyperlinkColumn.ElementStyle>
+                    </DataGridHyperlinkColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
