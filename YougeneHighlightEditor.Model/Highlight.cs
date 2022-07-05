@@ -8,6 +8,9 @@ using CsvHelper.Configuration.Attributes;
 namespace YougeneHighlightEditor.Model;
 public class Highlight
 {
+	// デフォルトコンストラクタがないと読み込み時にCsvHelper.HeaderValidationExceptionが発生するため
+	public Highlight() { }
+
 	public Highlight(DateTime deliveredOn, Trigger trigger, string description, string youTubeUrl)
 	{
 		DeliveredOn = deliveredOn;
