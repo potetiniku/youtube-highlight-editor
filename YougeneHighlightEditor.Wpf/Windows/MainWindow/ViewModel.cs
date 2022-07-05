@@ -16,6 +16,8 @@ namespace YougeneHighlightEditor.Wpf.Windows.MainWindow;
 [INotifyPropertyChanged]
 internal partial class ViewModel
 {
+	public ReactiveProperty<string> Title { get; } = new("Yougene Highlight Editor");
+
 	public ReactiveProperty<DateTime> DeliveredOn { get; set; } = new(DateTime.Now);
 	public ReactiveProperty<Trigger> Trigger { get; set; } = new();
 	public ReactiveProperty<string> Description { get; set; } = new();
@@ -32,6 +34,16 @@ internal partial class ViewModel
 
 	public ReactiveCollection<Highlight> Highlights { get; set; } = new();
 
+	private string editingFile = string.Empty;
+	private string EditingFile
+	{
+		set
+		{
+			editingFile = value;
+			Title.Value = $"{editingFile} - Yougene Highlight Editor";
+		}
+	}
+
 	[ICommand]
 	private void Open()
 	{
@@ -43,6 +55,8 @@ internal partial class ViewModel
 			Highlights.Clear();
 			CsvUtil.Read<Highlight>(dialog.FileName)
 				.ForEach(Highlights.Add);
+
+			EditingFile = dialog.FileName;
 		}
 	}
 
@@ -66,6 +80,6 @@ internal partial class ViewModel
 	[ICommand]
 	private void Save()
 	{
-
+		CsvUtil.OverWrite(editingFile, Highlights);
 	}
 }
