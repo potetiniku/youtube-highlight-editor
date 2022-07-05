@@ -9,7 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding Title.Value}"
     Width="800"
-    Height="480"
+    Height="450"
     Style="{StaticResource MaterialDesignWindow}"
     mc:Ignorable="d">
     <Window.DataContext>
