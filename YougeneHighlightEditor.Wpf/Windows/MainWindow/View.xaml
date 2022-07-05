@@ -67,20 +67,27 @@
         </Expander>
         <DataGrid
             AutoGenerateColumns="False"
-            ItemsSource="{Binding Highlights}">
+            CanUserAddRows="False"
+            ItemsSource="{Binding Highlights}"
+            SelectionMode="Extended"
+            SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Binding="{Binding DeliveredOn, StringFormat=yyyy/MM/dd}"
-                    Header="配信日"/>
+                    Header="配信日"
+                    IsReadOnly="True"/>
                 <DataGridTextColumn
                     Binding="{Binding Trigger}"
-                    Header="トリガー"/>
+                    Header="トリガー"
+                    IsReadOnly="True"/>
                 <DataGridTextColumn
                     Binding="{Binding Description}"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
                     Header="説明"/>
                 <DataGridHyperlinkColumn
                     Binding="{Binding YouTubeUrl}"
-                    Header="YouTubeのURL"/>
+                    Header="YouTubeのURL"
+                    IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
