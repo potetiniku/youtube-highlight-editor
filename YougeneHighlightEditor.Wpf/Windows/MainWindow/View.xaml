@@ -58,7 +58,9 @@
                 <DataGridTextColumn
                     Binding="{Binding DeliveredOn, StringFormat=yyyy/MM/dd}"
                     Header="配信日"/>
-                <DataGridComboBoxColumn Header="トリガー"/>
+                <DataGridTextColumn
+                    Binding="{Binding Trigger}"
+                    Header="トリガー"/>
                 <DataGridTextColumn
                     Binding="{Binding Description}"
                     Header="説明"/>
