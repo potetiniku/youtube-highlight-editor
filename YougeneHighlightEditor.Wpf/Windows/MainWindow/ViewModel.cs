@@ -36,6 +36,8 @@ internal partial class ViewModel
 	private void Open()
 	{
 		CommonOpenFileDialog dialog = new();
+		dialog.Filters.Add(new("CSVファイル", "*.csv"));
+
 		if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
 		{
 			Highlights.Clear();
