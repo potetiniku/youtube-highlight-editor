@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CsvHelper;
 using MaterialDesignThemes.Wpf;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Reactive.Bindings;
 using YougeneHighlightEditor.Model;
@@ -47,7 +47,7 @@ internal partial class ViewModel
 		}
 	}
 
-	[ICommand]
+	[RelayCommand]
 	private void Open()
 	{
 		CommonOpenFileDialog dialog = new();
@@ -63,7 +63,7 @@ internal partial class ViewModel
 		}
 	}
 
-	[ICommand]
+	[RelayCommand]
 	private void Add()
 	{
 		Highlights.Add(new(
@@ -80,7 +80,7 @@ internal partial class ViewModel
 		Highlights.Sort();
 	}
 
-	[ICommand]
+	[RelayCommand]
 	private void Save()
 	{
 		CsvUtil.OverWrite(editingFile, Highlights);
