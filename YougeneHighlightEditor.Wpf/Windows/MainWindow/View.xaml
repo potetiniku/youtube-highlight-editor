@@ -10,7 +10,9 @@
     Title="{Binding Title.Value}"
     Width="800"
     Height="450"
-    Style="{StaticResource MaterialDesignWindow}"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     mc:Ignorable="d">
     <Window.DataContext>
         <local:ViewModel/>
