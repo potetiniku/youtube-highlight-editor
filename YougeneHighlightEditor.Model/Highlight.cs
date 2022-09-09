@@ -39,6 +39,17 @@ public class Highlight : IComparable
 
 	public int CompareTo(object obj)
 	{
-		return DeliveredOn.CompareTo(((Highlight)obj).DeliveredOn);
+		var other = (Highlight)obj;
+		int primary = DeliveredOn.CompareTo((other).DeliveredOn);
+		if (primary != 0) return primary;
+
+		return ExtractTime(YouTubeUrl).CompareTo(ExtractTime(other.YouTubeUrl));
+
+		static int ExtractTime(string url)
+		{
+			const string parameter = "&t=";
+			int start = url.IndexOf(parameter) + parameter.Length;
+			return int.Parse(url.Substring(start, url.Length - "s".Length - start));
+		}
 	}
 }
