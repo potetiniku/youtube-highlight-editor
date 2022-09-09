@@ -21,6 +21,7 @@ internal partial class ViewModel
 
 	public ReactiveProperty<DateTime> DeliveredOn { get; set; } = new(DateTime.Now);
 	public ReactiveProperty<Trigger> Trigger { get; set; } = new();
+	public ReactiveProperty<Asterista> Asterista { get; set; } = new();
 	public ReactiveProperty<string> Description { get; set; } = new();
 	public ReactiveProperty<string> YouTubeUrl { get; set; } = new();
 
@@ -31,6 +32,16 @@ internal partial class ViewModel
 		{Model.Trigger.Yell, "エール"},
 		{Model.Trigger.RankingBoard, "強者ボード"},
 		{Model.Trigger.Other, "その他"}
+	};
+
+	public Dictionary<Asterista, string> AsteristaToDisplays { get; } = new()
+	{
+		{Model.Asterista.Sakura, "さくら"},
+		{Model.Asterista.Cosmi, "コズミ"},
+		{Model.Asterista.Anya, "アニャ"},
+		{Model.Asterista.Noran, "ノラン"},
+		{Model.Asterista.Aoha, "アオハ"},
+		{Model.Asterista.Moaka, "モアカ"}
 	};
 
 	public ReactiveCollection<Highlight> Highlights { get; set; } = new();
@@ -69,6 +80,7 @@ internal partial class ViewModel
 		Highlights.Add(new(
 			DeliveredOn.Value,
 			Trigger.Value,
+			Asterista.Value,
 			Description.Value,
 			YouTubeUrl.Value));
 

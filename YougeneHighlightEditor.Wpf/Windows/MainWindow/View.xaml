@@ -55,6 +55,14 @@
                             ItemsSource="{Binding TriggerToDisplays}"
                             SelectedValue="{Binding Trigger.Value}"
                             SelectedValuePath="Key"/>
+                        <ComboBox
+                            Width="120"
+                            HorizontalAlignment="Left"
+                            materialDesign:HintAssist.Hint="アスタリスタ"
+                            DisplayMemberPath="Value"
+                            ItemsSource="{Binding AsteristaToDisplays}"
+                            SelectedValue="{Binding Asterista.Value}"
+                            SelectedValuePath="Key"/>
                         <TextBox
                             Width="240"
                             Margin="0,8,0,0"
@@ -83,6 +91,10 @@
                     <DataGridTextColumn
                         Binding="{Binding Trigger}"
                         Header="トリガー"
+                        IsReadOnly="True"/>
+                    <DataGridTextColumn
+                        Binding="{Binding Asterista}"
+                        Header="アスタリスタ"
                         IsReadOnly="True"/>
                     <DataGridTextColumn
                         Binding="{Binding Description}"
