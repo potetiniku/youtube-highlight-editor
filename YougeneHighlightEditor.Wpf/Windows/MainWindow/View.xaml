@@ -105,7 +105,9 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="配信日">
+                    <DataGridTemplateColumn
+                        Header="配信日"
+                        SortMemberPath="DeliveredOn">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <DatePicker
@@ -114,7 +116,9 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="トリガー">
+                    <DataGridTemplateColumn
+                        Header="トリガー"
+                        SortMemberPath="Trigger">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox
@@ -126,7 +130,9 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="アスタリスタ">
+                    <DataGridTemplateColumn
+                        Header="アスタリスタ"
+                        SortMemberPath="Asterista">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox

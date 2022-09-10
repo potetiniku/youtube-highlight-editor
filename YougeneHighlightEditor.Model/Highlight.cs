@@ -14,15 +14,20 @@ public class Highlight : IComparable
 
 	public Highlight(DateTime deliveredOn, Trigger trigger, Asterista asterista, string description, string youTubeUrl)
 	{
-		DeliveredOn = deliveredOn;
+		this.deliveredOn = deliveredOn;
 		Trigger = trigger;
 		Asterista = asterista;
 		Description = description;
 		YouTubeUrl = youTubeUrl;
 	}
 
+	private DateTime deliveredOn;
 	[Index(0), Name("配信日"), Format("yyyy-MM-dd")]
-	public DateTime DeliveredOn { get; set; }
+	public DateTime DeliveredOn
+	{
+		get => deliveredOn + TimeSpan.FromSeconds(ExtractTime(YouTubeUrl));
+		set => deliveredOn = value;
+	}
 
 	[Index(1), Name("トリガー")]
 	public Trigger Trigger { get; set; }
@@ -65,17 +70,13 @@ public class Highlight : IComparable
 
 	public int CompareTo(object obj)
 	{
-		var other = (Highlight)obj;
-		int primary = DeliveredOn.CompareTo((other).DeliveredOn);
-		if (primary != 0) return primary;
+		return ExtractTime(YouTubeUrl).CompareTo(ExtractTime(((Highlight)obj).YouTubeUrl));
+	}
 
-		return ExtractTime(YouTubeUrl).CompareTo(ExtractTime(other.YouTubeUrl));
-
-		static int ExtractTime(string url)
-		{
-			const string parameter = "&t=";
-			int start = url.IndexOf(parameter) + parameter.Length;
-			return int.Parse(url.Substring(start, url.Length - "s".Length - start));
-		}
+	private static int ExtractTime(string url)
+	{
+		const string parameter = "&t=";
+		int start = url.IndexOf(parameter) + parameter.Length;
+		return int.Parse(url.Substring(start, url.Length - "s".Length - start));
 	}
 }
