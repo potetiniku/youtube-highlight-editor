@@ -37,6 +37,32 @@ public class Highlight : IComparable
 	[Index(4), Name("YouTubeのURL")]
 	public string YouTubeUrl { get; set; }
 
+	// static もしくは readonlyだとバインドできないため分けて定義している
+	[Ignore]
+	public Dictionary<Trigger, string> TriggerToDisplays { get; } = triggerToDisplays;
+	[Ignore]
+	public static readonly Dictionary<Trigger, string> triggerToDisplays = new()
+	{
+		{Trigger.Comment, "コメント"},
+		{Trigger.CommentYell, "コメント付エール"},
+		{Trigger.Yell, "エール"},
+		{Trigger.RankingBoard, "強者ボード"},
+		{Trigger.Other, "その他"}
+	};
+
+	[Ignore]
+	public Dictionary<Asterista, string> AsteristaToDisplays { get; } = asteristaToDisplays;
+	[Ignore]
+	public static readonly Dictionary<Asterista, string> asteristaToDisplays = new()
+	{
+		{Asterista.Sakura, "さくら"},
+		{Asterista.Cosmi, "コズミ"},
+		{Asterista.Anya, "アニャ"},
+		{Asterista.Noran, "ノラン"},
+		{Asterista.Aoha, "アオハ"},
+		{Asterista.Moaka, "モアカ"}
+	};
+
 	public int CompareTo(object obj)
 	{
 		var other = (Highlight)obj;

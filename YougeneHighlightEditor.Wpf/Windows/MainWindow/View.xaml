@@ -84,20 +84,37 @@
                 SelectionMode="Extended"
                 SelectionUnit="FullRow">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="配信日">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding DeliveredOn, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="トリガー">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                                    DisplayMemberPath="Value"
+                                    ItemsSource="{Binding TriggerToDisplays}"
+                                    SelectedValue="{Binding Trigger, UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedValuePath="Key"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="アスタリスタ">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                                    DisplayMemberPath="Value"
+                                    ItemsSource="{Binding AsteristaToDisplays}"
+                                    SelectedValue="{Binding Asterista, UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedValuePath="Key"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn
-                        Binding="{Binding DeliveredOn, StringFormat=yyyy/MM/dd}"
-                        Header="配信日"
-                        IsReadOnly="True"/>
-                    <DataGridTextColumn
-                        Binding="{Binding Trigger}"
-                        Header="トリガー"
-                        IsReadOnly="True"/>
-                    <DataGridTextColumn
-                        Binding="{Binding Asterista}"
-                        Header="アスタリスタ"
-                        IsReadOnly="True"/>
-                    <DataGridTextColumn
-                        Binding="{Binding Description}"
+                        Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                         EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
                         Header="説明"/>
                     <DataGridHyperlinkColumn

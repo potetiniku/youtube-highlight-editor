@@ -14,6 +14,7 @@ using Reactive.Bindings;
 using YougeneHighlightEditor.Model;
 
 namespace YougeneHighlightEditor.Wpf.Windows.MainWindow;
+
 [INotifyPropertyChanged]
 internal partial class ViewModel
 {
@@ -25,24 +26,8 @@ internal partial class ViewModel
 	public ReactiveProperty<string> Description { get; set; } = new();
 	public ReactiveProperty<string> YouTubeUrl { get; set; } = new();
 
-	public Dictionary<Trigger, string> TriggerToDisplays { get; } = new()
-	{
-		{Model.Trigger.Comment, "コメント"},
-		{Model.Trigger.CommentYell, "コメント付エール"},
-		{Model.Trigger.Yell, "エール"},
-		{Model.Trigger.RankingBoard, "強者ボード"},
-		{Model.Trigger.Other, "その他"}
-	};
-
-	public Dictionary<Asterista, string> AsteristaToDisplays { get; } = new()
-	{
-		{Model.Asterista.Sakura, "さくら"},
-		{Model.Asterista.Cosmi, "コズミ"},
-		{Model.Asterista.Anya, "アニャ"},
-		{Model.Asterista.Noran, "ノラン"},
-		{Model.Asterista.Aoha, "アオハ"},
-		{Model.Asterista.Moaka, "モアカ"}
-	};
+	public Dictionary<Trigger, string> TriggerToDisplays { get; } = Highlight.triggerToDisplays;
+	public Dictionary<Asterista, string> AsteristaToDisplays { get; } = Highlight.asteristaToDisplays;
 
 	public ReactiveCollection<Highlight> Highlights { get; set; } = new();
 
