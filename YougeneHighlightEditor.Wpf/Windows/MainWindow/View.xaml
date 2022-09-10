@@ -8,8 +8,8 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding Title.Value}"
-    Width="800"
-    Height="450"
+    Width="1280"
+    Height="720"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -51,14 +51,17 @@
                             Width="120"
                             HorizontalAlignment="Left"
                             materialDesign:HintAssist.Hint="トリガー"
+                            materialDesign:HintAssist.IsFloating="True"
                             DisplayMemberPath="Value"
                             ItemsSource="{Binding TriggerToDisplays}"
                             SelectedValue="{Binding Trigger.Value}"
                             SelectedValuePath="Key"/>
                         <ComboBox
                             Width="120"
+                            Margin="0,8,0,0"
                             HorizontalAlignment="Left"
                             materialDesign:HintAssist.Hint="アスタリスタ"
+                            materialDesign:HintAssist.IsFloating="True"
                             DisplayMemberPath="Value"
                             ItemsSource="{Binding AsteristaToDisplays}"
                             SelectedValue="{Binding Asterista.Value}"
@@ -67,27 +70,47 @@
                             Width="240"
                             Margin="0,8,0,0"
                             materialDesign:HintAssist.Hint="説明"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             Text="{Binding Description.Value}"/>
                         <TextBox
                             Width="240"
                             Margin="0,8,0,0"
                             materialDesign:HintAssist.Hint="YouTubeのURL"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             Text="{Binding YouTubeUrl.Value}"
                             TextWrapping="Wrap"/>
                     </StackPanel>
                 </DockPanel>
             </Expander>
             <DataGrid
+                VerticalContentAlignment="Center"
                 AutoGenerateColumns="False"
                 CanUserAddRows="False"
                 ItemsSource="{Binding Highlights}"
                 SelectionMode="Extended"
                 SelectionUnit="FullRow">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Grid>
+                                        <ContentPresenter
+                                            Margin="8,0"
+                                            VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="配信日">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <DatePicker SelectedDate="{Binding DeliveredOn, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DatePicker
+                                    Padding="8"
+                                    SelectedDate="{Binding DeliveredOn, UpdateSourceTrigger=PropertyChanged}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -95,6 +118,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox
+                                    Padding="8"
                                     DisplayMemberPath="Value"
                                     ItemsSource="{Binding TriggerToDisplays}"
                                     SelectedValue="{Binding Trigger, UpdateSourceTrigger=PropertyChanged}"
@@ -106,6 +130,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox
+                                    Padding="8"
                                     DisplayMemberPath="Value"
                                     ItemsSource="{Binding AsteristaToDisplays}"
                                     SelectedValue="{Binding Asterista, UpdateSourceTrigger=PropertyChanged}"
