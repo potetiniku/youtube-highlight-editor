@@ -70,7 +70,11 @@ public class Highlight : IComparable
 
 	public int CompareTo(object obj)
 	{
-		return ExtractTime(YouTubeUrl).CompareTo(ExtractTime(((Highlight)obj).YouTubeUrl));
+		var other = (Highlight)obj;
+		int primary = DeliveredOn.CompareTo(other.DeliveredOn);
+		if (primary != 0) return primary;
+
+		return ExtractTime(YouTubeUrl).CompareTo(ExtractTime(other.YouTubeUrl));
 	}
 
 	private static int ExtractTime(string url)
