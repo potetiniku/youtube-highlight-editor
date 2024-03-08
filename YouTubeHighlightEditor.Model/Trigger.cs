@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CsvHelper.Configuration.Attributes;
+﻿using CsvHelper.Configuration.Attributes;
 
 namespace YouTubeHighlightEditor.Model;
 public enum Trigger
@@ -14,12 +9,6 @@ public enum Trigger
 	[Name("コメント")]
 	Comment,
 
-	[Name("コメント付きエール")]
-	CommentYell,
-
-	[Name("エール")]
-	Yell,
-
-	[Name("強者ボード")]
-	RankingBoard
+	[Name("スパチャ")]
+	SuperChat
 }

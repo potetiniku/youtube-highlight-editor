@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CsvHelper.Configuration.Attributes;
+﻿using CsvHelper.Configuration.Attributes;
 
 namespace YouTubeHighlightEditor.Model;
 public class Highlight : IComparable
@@ -49,9 +44,7 @@ public class Highlight : IComparable
 	public static readonly Dictionary<Trigger, string> triggerToDisplays = new()
 	{
 		{Trigger.Comment, "コメント"},
-		{Trigger.CommentYell, "コメント付エール"},
-		{Trigger.Yell, "エール"},
-		{Trigger.RankingBoard, "強者ボード"},
+		{Trigger.SuperChat, "スパチャ"},
 		{Trigger.Other, "その他"}
 	};
 
@@ -70,7 +63,7 @@ public class Highlight : IComparable
 
 	public int CompareTo(object obj)
 	{
-		var other = (Highlight)obj;
+		Highlight other = (Highlight)obj;
 		int primary = DeliveredOn.CompareTo(other.DeliveredOn);
 		if (primary != 0) return primary;
 
