@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CsvHelper.Configuration.Attributes;
 
-namespace YougeneHighlightEditor.Model;
+namespace YouTubeHighlightEditor.Model;
 public enum Trigger
 {
 	[Name("その他")]

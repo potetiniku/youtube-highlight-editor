@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CsvHelper.Configuration.Attributes;
 
-namespace YougeneHighlightEditor.Model;
+namespace YouTubeHighlightEditor.Model;
 public class Highlight : IComparable
 {
 	// デフォルトコンストラクタがないと読み込み時に

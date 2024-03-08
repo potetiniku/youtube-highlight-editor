@@ -21,13 +21,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\YougeneHighlightEditor.Model\YougeneHighlightEditor.Model.csproj" />
+	  <ProjectReference Include="..\YouTubeHighlightEditor.Model\YouTubeHighlightEditor.Model.csproj" />
 	</ItemGroup>
 
 	<!-- Work around https://github.com/dotnet/wpf/issues/6792 -->
 	<Target Name="RemoveDuplicateAnalyzers" BeforeTargets="CoreCompile">
 		<ItemGroup>
-			<FilteredAnalyzer Include="@(Analyzer->Distinct())" />
+			<FilteredAnalyzer Include="@(Analyzer-&gt;Distinct())" />
 			<Analyzer Remove="@(Analyzer)" />
 			<Analyzer Include="@(FilteredAnalyzer)" />
 		</ItemGroup>

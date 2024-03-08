@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YougeneHighlightEditor.Model;
+namespace YouTubeHighlightEditor.Model;
 public static class ObservableCollectionExtensions
 {
 	public static void Sort<T>(this ObservableCollection<T> collection) where T : IComparable
