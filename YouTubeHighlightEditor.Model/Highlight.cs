@@ -7,11 +7,11 @@ public class Highlight : IComparable
 	// CsvHelper.HeaderValidationExceptionが発生するため
 	public Highlight() { }
 
-	public Highlight(DateTime deliveredOn, Trigger trigger, Asterista asterista, string description, string youTubeUrl)
+	public Highlight(DateTime deliveredOn, Trigger trigger, Channel channel, string description, string youTubeUrl)
 	{
 		this.deliveredOn = deliveredOn;
 		Trigger = trigger;
-		Asterista = asterista;
+		Channel = channel;
 		Description = description;
 		YouTubeUrl = youTubeUrl;
 	}
@@ -27,8 +27,8 @@ public class Highlight : IComparable
 	[Index(1), Name("トリガー")]
 	public Trigger Trigger { get; set; }
 
-	[Index(2), Name("アスタリスタ")]
-	public Asterista Asterista { get; set; }
+	[Index(2), Name("チャンネル")]
+	public Channel Channel { get; set; }
 
 	[Index(3), Name("説明")]
 	public string Description { get; set; }
@@ -49,16 +49,14 @@ public class Highlight : IComparable
 	};
 
 	[Ignore]
-	public Dictionary<Asterista, string> AsteristaToDisplays { get; } = asteristaToDisplays;
+	public Dictionary<Channel, string> ChannelToDisplays { get; } = channelToDisplays;
 	[Ignore]
-	public static readonly Dictionary<Asterista, string> asteristaToDisplays = new()
+	public static readonly Dictionary<Channel, string> channelToDisplays = new()
 	{
-		{Asterista.Sakura, "さくら"},
-		{Asterista.Cosmi, "コズミ"},
-		{Asterista.Anya, "アニャ"},
-		{Asterista.Noran, "ノラン"},
-		{Asterista.Aoha, "アオハ"},
-		{Asterista.Moaka, "モアカ"}
+		{Channel.Nagi, "紫陽花凪"},
+		{Channel.Shiomaru, "しおまる。"},
+		{Channel.Homaru, "鈴祈ほまる"},
+		{Channel.Mairi, "織姫まいり"}
 	};
 
 	public int CompareTo(object obj)

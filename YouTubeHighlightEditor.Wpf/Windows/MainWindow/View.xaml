@@ -60,11 +60,11 @@
                             Width="120"
                             Margin="0,8,0,0"
                             HorizontalAlignment="Left"
-                            materialDesign:HintAssist.Hint="アスタリスタ"
+                            materialDesign:HintAssist.Hint="チャンネル"
                             materialDesign:HintAssist.IsFloating="True"
                             DisplayMemberPath="Value"
-                            ItemsSource="{Binding AsteristaToDisplays}"
-                            SelectedValue="{Binding Asterista.Value}"
+                            ItemsSource="{Binding ChannelToDisplays}"
+                            SelectedValue="{Binding Channel.Value}"
                             SelectedValuePath="Key"/>
                         <TextBox
                             Width="240"
@@ -131,15 +131,15 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn
-                        Header="アスタリスタ"
-                        SortMemberPath="Asterista">
+                        Header="チャンネル"
+                        SortMemberPath="Channel">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox
                                     Padding="8"
                                     DisplayMemberPath="Value"
-                                    ItemsSource="{Binding AsteristaToDisplays}"
-                                    SelectedValue="{Binding Asterista, UpdateSourceTrigger=PropertyChanged}"
+                                    ItemsSource="{Binding ChannelToDisplays}"
+                                    SelectedValue="{Binding Channel, UpdateSourceTrigger=PropertyChanged}"
                                     SelectedValuePath="Key"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
